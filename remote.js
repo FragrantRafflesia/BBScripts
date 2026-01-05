@@ -8,9 +8,13 @@ export async function main(ns) {
     while (sec > minSec + 1) {
       await ns.weaken(host);
     }
-    while (money > maxMoney * 0.9) {
+    while (money < maxMoney * 0.9) {
       await ns.grow(host);
     }
-    await ns.hack(host);
+    while (sec <= minSec + 1) {
+      while (money >= maxMoney * 0.9) {
+        await ns.hack(host);
+      }
+    }
   }
 }
