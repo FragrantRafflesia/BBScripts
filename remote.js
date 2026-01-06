@@ -1,5 +1,5 @@
 export async function main(ns) {
-  let host = "harakiri-sushi";
+  let host = ns.getHostname();
   let minSec = ns.getServerMinSecurityLevel(host);
   let maxMoney = ns.getServerMaxMoney(host);
   while (true) {
