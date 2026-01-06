@@ -1,20 +1,16 @@
 export async function main(ns) {
-  var host = ns.getHostname();
-  var sec = ns.getServerSecurityLevel(host)
-  var minSec = ns.getServerMinSecurityLevel(host)
-  var money = ns.getServerMoneyAvailable(host)
-  var maxMoney = ns.getServerMaxMoney(host)
+  let host = "harakiri-sushi";
+  let minSec = ns.getServerMinSecurityLevel(host);
+  let maxMoney = ns.getServerMaxMoney(host);
   while (true) {
-    while (sec > minSec + 1) {
+    let sec = ns.getServerSecurityLevel(host);
+    let money = ns.getServerMoneyAvailable(host);
+    if (sec > minSec + 1) {
       await ns.weaken(host);
-    }
-    while (money < maxMoney * 0.9) {
+    } else if (money < maxMoney * 0.9) {
       await ns.grow(host);
-    }
-    while (sec <= minSec + 1) {
-      while (money >= maxMoney * 0.9) {
-        await ns.hack(host);
-      }
+    } else {
+      await ns.hack(host);
     }
   }
 }
