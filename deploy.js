@@ -1,5 +1,5 @@
 export async function main(ns) {
-  var host = "CSEC"
+  var host = "silver-helix"
   var serverMaxRam = ns.getServerMaxRam(host)
   var serverThreads = serverMaxRam / 2.45
   var serverThreadsRnd = Math.floor(serverThreads)
@@ -18,6 +18,10 @@ export async function main(ns) {
     if (ns.fileExists("HTTPWorm.exe", "home")) {
       await ns.httpworm(host);
     }
+        if (ns.fileExists("NUKE.exe", "home")) {
+      await ns.nuke(host);
+    }
+
     if (ns.fileExists("remote.js", host)) {
       ns.rm("remote.js", host)
       await ns.scp("remote.js", host, "home");
