@@ -18,6 +18,9 @@ export async function main(ns) {
     if (ns.fileExists("HTTPWorm.exe", "home")) {
       await ns.httpworm(host);
     }
+    if (ns.fileExists("SQLInject.exe", "home")) {
+      await ns.sqlinject(host);
+    }
     if (ns.fileExists("NUKE.exe", "home")) {
       await ns.nuke(host);
     }
